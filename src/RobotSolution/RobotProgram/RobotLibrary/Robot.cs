@@ -23,7 +23,7 @@ namespace RobotProgram.RobotLibrary
         }
 
 
-        public Robot(Room room, int xStartPosition, int yStartPosition, Direction direction)
+        protected Robot(Room room, int xStartPosition, int yStartPosition, Direction direction)
         {
             Room = room;
             CurrentDirection = direction;

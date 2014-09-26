@@ -12,14 +12,14 @@ namespace RobotProgramTest
         public void TranslateToRoomTest()
         {
             {
-                string input = "4 5";
+                const string input = "4 5";
                 Room goodRoom = input.TranslateToRoom();
                 Assert.AreEqual(goodRoom.Width, 4);
                 Assert.AreEqual(goodRoom.Depth, 5);
             }
 
             {
-                string[] strangeInputs = new[] { "3", "T O", "3 4 5" };
+                var strangeInputs = new[] { "3", "T O", "3 4 5" };
                 foreach (string input in strangeInputs)
                 {
                     try
@@ -38,9 +38,9 @@ namespace RobotProgramTest
         [TestMethod]
         public void TranslateToRobotTest()
         {
-            Room room = new Room(5, 7);
+            var room = new Room(5, 7);
             {
-                string input = "4 5 N";
+                const string input = "4 5 N";
                 RobotTypeVHG goodRobot = input.TranslateToRobot(room);
                 Assert.AreEqual(goodRobot.Coordinates.X, 4);
                 Assert.AreEqual(goodRobot.Coordinates.Y, 5);
@@ -48,7 +48,7 @@ namespace RobotProgramTest
             }
 
             {
-                string[] strangeInputs = new[] { "3 4 s", "5 7 N", "3 5", "4 4 FF" };
+                var strangeInputs = new[] { "3 4 s", "5 7 N", "3 5", "4 4 FF" };
                 foreach (string input in strangeInputs)
                 {
                     try
@@ -68,9 +68,9 @@ namespace RobotProgramTest
         public void TranslateToCommandsTest()
         {
             {
-                string input = "HGHHVVG";
+                const string input = "HGHHVVG";
                 List<Command> goodCommands = input.TranslateToCommands();
-                List<Command> facitCommands = new List<Command> { Command.H, Command.G, Command.H, Command.H, Command.V, Command.V, Command.G };
+                var facitCommands = new List<Command> { Command.H, Command.G, Command.H, Command.H, Command.V, Command.V, Command.G };
                 Assert.AreEqual(goodCommands.Count, facitCommands.Count);
                 for (int i = 0; i < goodCommands.Count; i++)
                 {
@@ -80,7 +80,7 @@ namespace RobotProgramTest
             }
 
             {
-                string[] strangeInputs = new[] { "3 4 s", "HGsHVVG", "HGH HVVG" };
+                var strangeInputs = new[] { "3 4 s", "HGsHVVG", "HGH HVVG" };
                 foreach (string input in strangeInputs)
                 {
                     try

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using RobotProgram.RobotLibrary;
 
 namespace RobotProgram.RobotInAction
@@ -34,7 +35,7 @@ namespace RobotProgram.RobotInAction
 
                 if (Int32.TryParse(splitPosition[0], out xPosition) &&
                     Int32.TryParse(splitPosition[1], out yPosition) &&
-                    Direction.TryParse(splitPosition[2], out direction))
+                    Enum.TryParse(splitPosition[2], out direction))
                     return new RobotTypeVHG(room, xPosition, yPosition, direction);
             }
             throw new Exception("Robot positionering har felaktigt format.");
@@ -47,7 +48,7 @@ namespace RobotProgram.RobotInAction
             foreach (char txt in inputString)
             {
                 Command enumValue;
-                if (!Command.TryParse(txt.ToString(), out enumValue))
+                if (!Enum.TryParse(txt.ToString(CultureInfo.InvariantCulture), out enumValue))
                     throw new Exception(txt + " är ett otillåtet kommando.");
 
                 commands.Add(enumValue);
