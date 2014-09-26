@@ -40,15 +40,15 @@ namespace RobotProgramTest
         {
             var room = new Room(5, 7);
             {
-                const string input = "4 5 N";
+                const string input = "4 5 North";
                 RobotTypeVHG goodRobot = input.TranslateToRobot(room);
                 Assert.AreEqual(goodRobot.Coordinates.X, 4);
                 Assert.AreEqual(goodRobot.Coordinates.Y, 5);
-                Assert.AreEqual(goodRobot.CurrentDirection, Direction.N);
+                Assert.AreEqual(goodRobot.CurrentDirection, Direction.North);
             }
 
             {
-                var strangeInputs = new[] { "3 4 s", "5 7 N", "3 5", "4 4 FF" };
+                var strangeInputs = new[] { "3 4 s", "5 7 North", "3 5", "4 4 FF" };
                 foreach (string input in strangeInputs)
                 {
                     try
@@ -68,9 +68,9 @@ namespace RobotProgramTest
         public void TranslateToCommandsTest()
         {
             {
-                const string input = "HGHHVVG";
+                const string input = "Right Walk Right Right Left Left Walk";
                 List<Command> goodCommands = input.TranslateToCommands();
-                var facitCommands = new List<Command> { Command.H, Command.G, Command.H, Command.H, Command.V, Command.V, Command.G };
+                var facitCommands = new List<Command> { Command.Right, Command.Walk, Command.Right, Command.Right, Command.Left, Command.Left, Command.Walk };
                 Assert.AreEqual(goodCommands.Count, facitCommands.Count);
                 for (int i = 0; i < goodCommands.Count; i++)
                 {

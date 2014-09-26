@@ -10,23 +10,23 @@ namespace RobotProgram.RobotInAction
         {
             try
             {
-                Console.Title = "Robotprogrammering";
+                Console.Title = "Robot walk";
 
-                string roomInput = WriteAndRead("Storlek på rummet med två koordinater, exempel [5 9]:");
+                string roomInput = WriteAndRead("Enter room size with two coordinates, example [5 9]:");
                 Room room = roomInput.TranslateToRoom();
 
-                string robotPositionInput = WriteAndRead("Koordinater och riktning på din robot, exempel [5 9 N]:");
+                string robotPositionInput = WriteAndRead("Enter coordinates and direction of your robot, example [5 9 North]:");
                 RobotTypeVHG robotPosition = robotPositionInput.TranslateToRobot(room);
 
-                string commandInput = WriteAndRead("Styrkommando (V = vänster, H = höger, G = framåt), exempel [VHGGG]:");
+                string commandInput = WriteAndRead("Enter robot command, example [Left Right Walk Right]:");
                 List<Command> commands = commandInput.TranslateToCommands();
 
                 robotPosition.Move(commands);
-                WriteAndRead("Rapport: " + robotPosition);
+                WriteAndRead("Current robot position: " + robotPosition);
             }
             catch (Exception e)
             {
-                WriteAndRead("Försök igen: " + e.Message);
+                WriteAndRead("Try again: " + e.Message);
                 RunRobot();
             }
 

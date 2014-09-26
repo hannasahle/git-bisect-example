@@ -29,23 +29,23 @@ namespace RobotProgram.RobotLibrary
     public enum Command
     {
         [Description("Turn Left")]
-        V,
+        Left,
         [Description("Turn Right")]
-        H,
+        Right,
         [Description("Go Straight")]
-        G
+        Walk
     };
 
     public enum Direction
     {
         [Description("East")]
-        Ö,
+        East,
         [Description("South")]
-        S,
+        South,
         [Description("West")]
-        V,
+        West,
         [Description("North")]
-        N
+        North
     };
 
 }

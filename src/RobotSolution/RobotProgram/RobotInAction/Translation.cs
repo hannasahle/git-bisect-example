@@ -20,7 +20,7 @@ namespace RobotProgram.RobotInAction
                     Int32.TryParse(splitRoom[1], out depth))
                     return new Room(width, depth);
             }
-            throw new Exception("Storlek på rummet har felaktigt format.");
+            throw new Exception("Room size is not in correct format.");
         }
 
         public static RobotTypeVHG TranslateToRobot(this string inputString, Room room)
@@ -38,18 +38,19 @@ namespace RobotProgram.RobotInAction
                     Enum.TryParse(splitPosition[2], out direction))
                     return new RobotTypeVHG(room, xPosition, yPosition, direction);
             }
-            throw new Exception("Robot positionering har felaktigt format.");
+            throw new Exception("Robot position is not in correct format.");
         }
 
         public static List<Command> TranslateToCommands(this string inputString)
         {
             var commands = new List<Command>();
+            var inputCommands = inputString.Split(' ');
 
-            foreach (char txt in inputString)
+            foreach (var command in inputCommands)
             {
                 Command enumValue;
-                if (!Enum.TryParse(txt.ToString(CultureInfo.InvariantCulture), out enumValue))
-                    throw new Exception(txt + " är ett otillåtet kommando.");
+                if (!Enum.TryParse(command, out enumValue))
+                    throw new Exception(command + " is not allowed.");
 
                 commands.Add(enumValue);
             }

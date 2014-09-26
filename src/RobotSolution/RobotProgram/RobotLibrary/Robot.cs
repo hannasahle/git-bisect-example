@@ -16,7 +16,7 @@ namespace RobotProgram.RobotLibrary
             {
                 bool validation = 0 <= value.X && value.X < Room.Width && 0 <= value.Y && value.Y < Room.Depth;
                 if (!validation)
-                    throw new Exception(String.Format("Ny position [{0},{1}] ligger utanför befintlig rumsdimension [0-{2},0-{3}]. ",
+                    throw new Exception(String.Format("New position [{0},{1}] is out of bound, room dimensions are [0-{2},0-{3}]. ",
                                                         value.X, value.Y, Room.Width - 1, Room.Depth - 1));
                 _coordinates = value;
             }
@@ -39,20 +39,20 @@ namespace RobotProgram.RobotLibrary
 
             switch (CurrentDirection)
             {
-                case Direction.Ö:
+                case Direction.East:
                     xChange++;
                     break;
-                case Direction.S:
+                case Direction.South:
                     yChange++;
                     break;
-                case Direction.V:
+                case Direction.West:
                     xChange--;
                     break;
-                case Direction.N:
+                case Direction.North:
                     yChange--;
                     break;
                 default:
-                    throw new Exception("WalkStraight saknar hantering för riktning " + CurrentDirection);
+                    throw new Exception("Walk has no implementation for " + CurrentDirection);
             }
             Coordinates = new Coordinates(Coordinates.X + xChange, Coordinates.Y + yChange);
         }
@@ -61,20 +61,20 @@ namespace RobotProgram.RobotLibrary
         {
             switch (CurrentDirection)
             {
-                case Direction.Ö:
-                    CurrentDirection = Direction.N;
+                case Direction.East:
+                    CurrentDirection = Direction.North;
                     break;
-                case Direction.N:
-                    CurrentDirection = Direction.V;
+                case Direction.North:
+                    CurrentDirection = Direction.West;
                     break;
-                case Direction.V:
-                    CurrentDirection = Direction.S;
+                case Direction.West:
+                    CurrentDirection = Direction.South;
                     break;
-                case Direction.S:
-                    CurrentDirection = Direction.Ö;
+                case Direction.South:
+                    CurrentDirection = Direction.East;
                     break;
                 default:
-                    throw new Exception("TurnLeft saknar hantering för riktning " + CurrentDirection);
+                    throw new Exception("TurnLeft has no implementation for " + CurrentDirection);
             }
         }
 
@@ -82,20 +82,20 @@ namespace RobotProgram.RobotLibrary
         {
             switch (CurrentDirection)
             {
-                case Direction.Ö:
-                    CurrentDirection = Direction.S;
+                case Direction.East:
+                    CurrentDirection = Direction.South;
                     break;
-                case Direction.S:
-                    CurrentDirection = Direction.V;
+                case Direction.South:
+                    CurrentDirection = Direction.West;
                     break;
-                case Direction.V:
-                    CurrentDirection = Direction.N;
+                case Direction.West:
+                    CurrentDirection = Direction.North;
                     break;
-                case Direction.N:
-                    CurrentDirection = Direction.Ö;
+                case Direction.North:
+                    CurrentDirection = Direction.East;
                     break;
                 default:
-                    throw new Exception("TurnRight saknar hantering för riktning " + CurrentDirection);
+                    throw new Exception("TurnRight has no implementation for " + CurrentDirection);
             }
         }
 
