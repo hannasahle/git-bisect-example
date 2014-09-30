@@ -18,13 +18,13 @@ namespace RobotProgram.RobotLibrary
                 {
                     case Command.Left:           
                         TurnLeft();
-                        break;
+                        break;      
                     case Command.Right:
                         TurnRight();
                         break;
                     case Command.Walk:
                         WalkStraight();
-                        break;
+                        break;                  
                 }
             }
         }
