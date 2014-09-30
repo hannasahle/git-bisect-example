@@ -26,7 +26,7 @@ namespace RobotProgramTest
                     {
                         input.TranslateToRoom();
                     }
-                    catch
+                    catch 
                     {
                         continue;
                     }
