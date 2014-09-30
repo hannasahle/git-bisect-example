@@ -16,7 +16,7 @@ namespace RobotProgram.RobotLibrary
             {
                 switch (c)
                 {
-                    case Command.Left:
+                    case Command.Left:           
                         TurnLeft();
                         break;
                     case Command.Right:
