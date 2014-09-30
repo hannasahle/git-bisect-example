@@ -26,7 +26,7 @@ namespace RobotProgramTest
             robot.Move(commands);
             Assert.AreEqual(robot.Coordinates.X, 3);
             Assert.AreEqual(robot.Coordinates.Y, 1);
-            Assert.AreEqual(robot.CurrentDirection, Direction.East);
+            Assert.AreEqual(robot.CurrentDirection, Direction.East);    
         }
 
         [TestMethod]
