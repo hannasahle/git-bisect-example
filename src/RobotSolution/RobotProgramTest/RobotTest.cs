@@ -12,11 +12,11 @@ namespace RobotProgramTest
         {
             var robot = new RobotTypeVHG(new Room(5, 5), 1, 2, Direction.North);
             var commands = new List<Command> { Command.Right, Command.Walk, Command.Right, Command.Walk, Command.Walk, Command.Right, Command.Walk, Command.Right, Command.Walk };
-            robot.Move(commands);
+            robot.Move(commands);  
             Assert.AreEqual(robot.Coordinates.X, 1);
-            Assert.AreEqual(robot.Coordinates.Y, 3);
+            Assert.AreEqual(robot.Coordinates.Y, 3);  
             Assert.AreEqual(robot.CurrentDirection, Direction.North);
-        }
+        }  
 
         [TestMethod]
         public void WalkTest2()
@@ -27,7 +27,7 @@ namespace RobotProgramTest
             Assert.AreEqual(robot.Coordinates.X, 3);
             Assert.AreEqual(robot.Coordinates.Y, 1);
             Assert.AreEqual(robot.CurrentDirection, Direction.East);    
-        }
+        }  
 
         [TestMethod]
         public void WalkOutOfBoundTest1()
