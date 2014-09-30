@@ -10,6 +10,9 @@ namespace RobotProgram.RobotInAction
         {
             try
             {
+
+                throw new Exception("Find me");
+
                 Console.Title = "Robot walk";
 
                 string roomInput = WriteAndRead("Enter room size with two coordinates, example [5 9]:");
@@ -23,6 +26,8 @@ namespace RobotProgram.RobotInAction
 
                 robotPosition.Move(commands);
                 WriteAndRead("Current robot position: " + robotPosition);
+
+                
             }
             catch (Exception e)
             {
